@@ -171,8 +171,6 @@
             const quoteVariation = (TotalCost / 0.35);
 
             // Update the result elements
-            document.getElementById('techCost').textContent = techCost.toFixed(2);
-            document.getElementById('appCost').textContent = appCost.toFixed(2);
             document.getElementById('gpPercentage').textContent = isNaN(gpPercentage) ? '0.00' : gpPercentage.toFixed(2);
             const gpMessage = document.getElementById('gpMessage');
             if (gpPercentage < 65) {
