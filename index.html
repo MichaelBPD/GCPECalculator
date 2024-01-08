@@ -181,7 +181,7 @@
             const appCost = appHours * 75;
             const TotalCost = techCost + appCost + subbieCost + materialCost + otherCost;
             const gpPercentage = ((quoteTotal - TotalCost) / quoteTotal) * 100;
-            const quoteVariation = (TotalCost / 0.3);
+            const quoteVariation = (TotalCost / 0.4);
 
             // Update the result elements
             document.getElementById('gpPercentage').textContent = isNaN(gpPercentage) ? '0.00' : gpPercentage.toFixed(2);
