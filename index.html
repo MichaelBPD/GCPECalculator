@@ -179,7 +179,38 @@
             // Calculate Technician Cost, Apprentice Cost, and GP Percentage
             const techCost = techHours * 195;
             const appCost = appHours * 100;
-            const TotalCost = techCost + appCost + subbieCost + materialCost + otherCost;
+
+            let adjustedMaterialCost = materialCost;
+            if (materialCost > 500) {
+                adjustedMaterialCost = materialCost * 0.375;
+            } else if (materialCost > 250) {
+                adjustedMaterialCost = materialCost * 0.471;
+            } else if (materialCost > 100) {
+                adjustedMaterialCost = materialCost * 0.516;
+            } else if (materialCost > 55) {
+                adjustedMaterialCost = materialCost * 0.576;
+            } else if (materialCost > 25) {
+                adjustedMaterialCost = materialCost * 0.606;
+            } else {
+                adjustedMaterialCost = materialCost * 0.75;
+            }
+
+            let adjustedSubbieCost = subbieCost;
+            if (subbieCost > 500) {
+                adjustedSubbieCost = subbieCost * 0.375;
+            } else if (subbieCost > 250) {
+                adjustedSubbieCost = subbieCost * 0.471;
+            } else if (subbieCost > 100) {
+                adjustedSubbieCost = subbieCost * 0.516;
+            } else if (subbieCost > 50) {
+                adjustedSubbieCost = subbieCost * 0.576;
+            } else if (subbieCost > 25) {
+                adjustedSubbieCost = subbieCost * 0.606;
+            } else {
+                adjustedSubbieCost = subbieCost * 0.75;
+            }
+     
+            const TotalCost = techCost + appCost + adjustedSubbieCost + adjustedMaterialCost + otherCost;
             const gpPercentage = ((quoteTotal - TotalCost) / quoteTotal) * 100;
             const quoteVariation = (TotalCost / 0.3);
 
