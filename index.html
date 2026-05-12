@@ -139,17 +139,17 @@
                     <label for="apprenticeHours">Apprentice Hours:</label>
                     <input type="number" id="apprenticeHours"><br>
             
-                    <label for="subbieCost">Subbie Cost:</label>
+                    <label for="subbieCost">Plan Hire and Subbie Cost:</label>
                     <input type="number" id="subbieCost"><br>
-            
+
+                    <label for="otherCost">External Qualified Subbie Cost (Plumber/Electrician):</label>
+                    <input type="number" id="externalSubbieCost"><br>
+                    
                     <label for="materialCost">Material Cost:</label>
                     <input type="number" id="materialCost"><br>
             
                     <label for="otherCost">QBCC FORM 4, Home Insurance, Documentation:</label>
                     <input type="number" id="otherCost"><br>
-
-                    <label for="otherCost">External Only Subbie Cost:</label>
-                    <input type="number" id="externalSubbieCost"><br>
                 </form>
             
                 <div class="container">
@@ -172,6 +172,7 @@
         // Function to calculate the results
  function calculate() {
             // Get values from input fields and convert empty/null values to 0
+             const gpTarget = 70;
             const quoteTotal = parseFloat(document.getElementById('quoteTotal').value) || 0;
             const techHours = parseFloat(document.getElementById('techHours').value) || 0;
             const appHours = parseFloat(document.getElementById('apprenticeHours').value) || 0;
@@ -208,9 +209,8 @@
 
             const adjustedOtherCost = otherCost * .375;
 
-
-            const adjustedExternalSubbieCost = (externalSubbieCost / 5 * 3);
-     
+            let adjustedExternalSubbieCost = externalSubbieCost * 1.5 * ((100 - gpTarget) / 100); 
+   
             const TotalCost = techCost + appCost + adjustedSubbieCost + ((adjustedMaterialCost + adjustedOtherCost + adjustedExternalSubbieCost) * 1.05);
             const gpPercentage = ((quoteTotal - TotalCost) / quoteTotal) * 100;
             const quoteVariation = (TotalCost / 0.3);
