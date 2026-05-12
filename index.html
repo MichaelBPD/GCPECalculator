@@ -172,7 +172,8 @@
         // Function to calculate the results
  function calculate() {
             // Get values from input fields and convert empty/null values to 0
-             const gpTarget = 70;
+            const gpTarget = 70;
+            const MarkupPerc8 = 1.03;
             const quoteTotal = parseFloat(document.getElementById('quoteTotal').value) || 0;
             const techHours = parseFloat(document.getElementById('techHours').value) || 0;
             const appHours = parseFloat(document.getElementById('apprenticeHours').value) || 0;
@@ -211,7 +212,7 @@
 
             let adjustedExternalSubbieCost = externalSubbieCost * 1.5 * ((100 - gpTarget) / 100); 
    
-            const TotalCost = techCost + appCost + adjustedSubbieCost + adjustedExternalSubbieCost + ((adjustedMaterialCost + adjustedOtherCost) * 1.05);
+            const TotalCost = (techCost + appCost + adjustedSubbieCost + adjustedExternalSubbieCost + ((adjustedMaterialCost + adjustedOtherCost) * 1.05)) * MarkupPerc;
             const gpPercentage = ((quoteTotal - TotalCost) / quoteTotal) * 100;
             const quoteVariation = (TotalCost / 0.3);
 
