@@ -183,8 +183,8 @@
             const externalSubbieCost = parseFloat(document.getElementById('externalSubbieCost').value) || 0;
     
             // Calculate Technician Cost, Apprentice Cost, and GP Percentage
-            const techCost = techHours * 207;
-            const appCost = appHours * 135;
+            const techCost = techHours * 207 / MarkupPerc;
+            const appCost = appHours * 135 / MarkupPerc;
 
             let adjustedMaterialCost = materialCost;
             if (materialCost > 500) {
